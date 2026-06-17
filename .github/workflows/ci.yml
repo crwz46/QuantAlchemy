@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest tests -v --tb=short -W ignore::DeprecationWarning
+
+      - name: Smoke test imports
+        run: python -c "
+          from quantalchemy.data import BinanceLoader, BybitLoader, YahooLoader;
+          from quantalchemy.backtest import BacktestEngine, SMACrossover, PerformanceMetrics;
+          from quantalchemy.portfolio import MarkowitzOptimizer, BlackLitterman;
+          from quantalchemy.regime import HMMRegime;
+          from quantalchemy.alpha import AlphaDiscovery;
+          print('All imports OK');
+        "

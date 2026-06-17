@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.git/
+.gitignore
+.pytest_cache/
+*.csv
+*.xlsx
+data/market/
+.vscode/
+.idea/

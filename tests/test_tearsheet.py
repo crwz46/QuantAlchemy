@@ -19,5 +19,5 @@ class TestTearsheet:
         report = TearsheetReport(equity=equity, returns=returns, metrics=metrics)
         html = report.create_html()
         assert "<!DOCTYPE html>" in html
-        assert "Equity Curve" in html
+        assert "Equity & Drawdown" in html
         assert "Performance Metrics" in html
