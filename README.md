@@ -10,7 +10,7 @@
   [![Code style](https://img.shields.io/badge/code%20style-black-000000)](https://github.com/psf/black)
 
   <br>
-  <img src="https://via.placeholder.com/800x400/1a1a2e/e94560?text=QuantAlchemy+Dashboard" alt="Dashboard Preview" width="80%">
+  <img src="https://quantalchemy.streamlit.app/" alt="Dashboard Preview" width="80%">
   <br>
   <em>Interactive Streamlit dashboard with live data, backtesting, and portfolio optimization</em>
 </div>
